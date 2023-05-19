@@ -2,12 +2,13 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
 const assert = require("assert");
 require("dotenv").config();
 const URL = process.env.AWS_ENDPOINT;
-describe("Upload file json", () => {
+describe("Delete video, image", function () {
     let driver;
 
     before(async function () {
         // Khởi tạo WebDriver
         driver = await new Builder().forBrowser("chrome").build();
+        await driver.manage().window().setRect({ width: 1280, height: 1080 });
         await driver.get(URL);
         await driver.sleep(2000);
         //Login
@@ -30,28 +31,25 @@ describe("Upload file json", () => {
 
     beforeEach(async function () {
         // Điều hướng đến trang web trước mỗi test case
-        await driver.get(URL);
+        await driver.get(URL + "/gallery");
+        await driver.sleep(2000);
     });
 
-    //Upload json file cho trận đấu đầu tiên
-    it("Upload json file", async () => {
-        await driver.sleep(2000);
-        await driver.findElement(By.xpath("//td[7]")).click();
-        await driver.findElement(By.css(".sc-hLseeU > span")).click();
+    it("Test Case 1: Xóa hình ảnh, video đầu tiên", async () => {
         await driver
-            .findElement(By.name("file"))
-            .sendKeys("F:/video-bong-da/VietNam_Malay.json");
-
-        await driver.sleep(1000);
-
-        await driver
-            .findElement(By.css(".MuiButton-root:nth-child(2)"))
+            .findElement(
+                By.xpath(
+                    "/html/body/div/div/div/main/div/div/div[3]/div[1]/div/div[1]/button"
+                )
+            )
             .click();
-        await driver.sleep(3000);
+        await driver.findElement(By.css(".ant-btn-primary > span")).click();
+        await driver.sleep(2000);
+
         assert(
             (await driver
                 .findElement(By.css(".MuiPaper-elevation0"))
-                .getText()) == "Saved"
+                .getText()) == "Delete Succeed"
         );
     });
 });

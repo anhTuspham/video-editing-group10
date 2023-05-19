@@ -24,8 +24,8 @@ describe("Đăng nhập", function () {
 
     it("Test Case 1: Sai tài khoản", async () => {
         await driver.findElement(By.id("mui-1")).click();
-        await driver.findElement(By.id("mui-1")).sendKeys("test123");
-        await driver.findElement(By.id("mui-2")).sendKeys("Abc1234@");
+        await driver.findElement(By.id("mui-1")).sendKeys("Anhtutest123");
+        await driver.findElement(By.id("mui-2")).sendKeys("Anhtutest123@");
         await driver.findElement(By.css(".MuiButton-root")).click();
 
         await driver.sleep(3000);
@@ -39,8 +39,8 @@ describe("Đăng nhập", function () {
 
     it("Test Case 2: Sai mật khẩu", async () => {
         await driver.findElement(By.id("mui-1")).click();
-        await driver.findElement(By.id("mui-1")).sendKeys("test12");
-        await driver.findElement(By.id("mui-2")).sendKeys("Abc12345");
+        await driver.findElement(By.id("mui-1")).sendKeys("Anhtutest123@");
+        await driver.findElement(By.id("mui-2")).sendKeys("Anhtutest123");
         await driver.findElement(By.css(".MuiButton-root")).click();
 
         await driver.sleep(3000);
@@ -54,8 +54,8 @@ describe("Đăng nhập", function () {
 
     it("Test Case 3: Đăng nhập thành công", async () => {
         await driver.findElement(By.id("mui-1")).click();
-        await driver.findElement(By.id("mui-1")).sendKeys("test12");
-        await driver.findElement(By.id("mui-2")).sendKeys("Abc1234@");
+        await driver.findElement(By.id("mui-1")).sendKeys("Anhtutest123@");
+        await driver.findElement(By.id("mui-2")).sendKeys("Anhtutest123@");
         await driver.findElement(By.css(".MuiButton-root")).click();
 
         await driver.sleep(3000);

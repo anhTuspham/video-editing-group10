@@ -12,8 +12,8 @@ describe("Upload video, image", function () {
         await driver.sleep(2000);
         //Login
         await driver.findElement(By.id("mui-1")).click();
-        await driver.findElement(By.id("mui-1")).sendKeys("test12");
-        await driver.findElement(By.id("mui-2")).sendKeys("Abc1234@");
+        await driver.findElement(By.id("mui-1")).sendKeys("Anhtutest123@");
+        await driver.findElement(By.id("mui-2")).sendKeys("Anhtutest123@");
         await driver.findElement(By.css(".MuiButton-root")).click();
         await driver.sleep(3000);
         assert(
@@ -43,7 +43,7 @@ describe("Upload video, image", function () {
         //await driver.findElement(By.css(".sc-hLseeU")).click();
         await driver
             .findElement(By.name("file"))
-            .sendKeys("C:/Users/ZEPHYRUS/Downloads/favorite-hiking-place.png");
+            .sendKeys("F:/video-bong-da/mu.png");
 
         await driver.sleep(1000);
 
@@ -72,7 +72,7 @@ describe("Upload video, image", function () {
         //await driver.findElement(By.css(".sc-hLseeU")).click();
         await driver
             .findElement(By.name("file"))
-            .sendKeys("C:/Users/ZEPHYRUS/Downloads/intro.mp4");
+            .sendKeys("F:/video-bong-da/BUR-vs-SUN.mp4");
 
         await driver.sleep(1000);
 
