@@ -12,8 +12,8 @@ describe("Add match", () => {
         await driver.sleep(1000);
         //Login
         await driver.findElement(By.id("mui-1")).click();
-        await driver.findElement(By.id("mui-1")).sendKeys("test12");
-        await driver.findElement(By.id("mui-2")).sendKeys("Abc1234@");
+        await driver.findElement(By.id("mui-1")).sendKeys("Anhtutest123@");
+        await driver.findElement(By.id("mui-2")).sendKeys("Anhtutest123@");
         await driver.findElement(By.css(".MuiButton-root")).click();
         await driver.sleep(2000);
         assert(
