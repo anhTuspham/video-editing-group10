@@ -2,12 +2,13 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
 const assert = require("assert");
 require("dotenv").config();
 const URL = process.env.AWS_ENDPOINT;
-describe("Upload file json", () => {
+describe("Filter video", function () {
     let driver;
 
     before(async function () {
         // Khởi tạo WebDriver
         driver = await new Builder().forBrowser("chrome").build();
+        await driver.manage().window().setRect({ width: 1280, height: 1080 });
         await driver.get(URL);
         await driver.sleep(2000);
         //Login
@@ -31,27 +32,43 @@ describe("Upload file json", () => {
     beforeEach(async function () {
         // Điều hướng đến trang web trước mỗi test case
         await driver.get(URL);
+        await driver.sleep(2000);
     });
 
-    //Upload json file cho trận đấu đầu tiên
-    it("Upload json file", async () => {
-        await driver.sleep(2000);
-        await driver.findElement(By.xpath("//td[7]")).click();
-        await driver.findElement(By.css(".sc-hLseeU > span")).click();
+    it("Test Case 1: Tìm video", async () => {
+        await driver.findElement(By.xpath("//td[6]/button")).click();
+
+        await driver.sleep(3000);
+
         await driver
-            .findElement(By.name("file"))
-            .sendKeys("D:/HK2-2023-2024/CongCuVaMoiTruongPhatTrienPhanMem/VietNam_Malay.json");
+            .findElement(
+                By.css(".ant-table-cell:nth-child(2) .ant-dropdown-trigger")
+            )
+            .click();
+
+        await driver.findElement(By.xpath("//li/span/span")).click();
+
+        await driver.findElement(By.css(".ant-btn-primary")).click();
 
         await driver.sleep(1000);
 
         await driver
-            .findElement(By.css(".MuiButton-root:nth-child(2)"))
+            .takeScreenshot()
+            .then((image) =>
+                require("fs").writeFileSync(
+                    "result-images/filterVideo-tc1.png",
+                    image,
+                    "base64"
+                )
+            );
+
+        //reset lại filter
+        await driver
+            .findElement(
+                By.css(".ant-table-cell:nth-child(2) .ant-dropdown-trigger")
+            )
             .click();
-        await driver.sleep(3000);
-        assert(
-            (await driver
-                .findElement(By.css(".MuiPaper-elevation0"))
-                .getText()) == "Saved"
-        );
+
+        await driver.findElement(By.xpath("//div[2]/button/span")).click();
     });
 });

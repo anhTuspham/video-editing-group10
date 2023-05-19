@@ -2,7 +2,7 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
 const assert = require("assert");
 require("dotenv").config();
 const URL = process.env.AWS_ENDPOINT;
-describe("Upload file json", () => {
+describe("Log out", function () {
     let driver;
 
     before(async function () {
@@ -31,27 +31,14 @@ describe("Upload file json", () => {
     beforeEach(async function () {
         // Điều hướng đến trang web trước mỗi test case
         await driver.get(URL);
+        await driver.sleep(2000);
     });
 
-    //Upload json file cho trận đấu đầu tiên
-    it("Upload json file", async () => {
+    it("Test Case 1: Đăng xuất", async () => {
+        await driver.findElement(By.css("div > .MuiSvgIcon-root")).click();
         await driver.sleep(2000);
-        await driver.findElement(By.xpath("//td[7]")).click();
-        await driver.findElement(By.css(".sc-hLseeU > span")).click();
-        await driver
-            .findElement(By.name("file"))
-            .sendKeys("D:/HK2-2023-2024/CongCuVaMoiTruongPhatTrienPhanMem/VietNam_Malay.json");
-
-        await driver.sleep(1000);
-
-        await driver
-            .findElement(By.css(".MuiButton-root:nth-child(2)"))
-            .click();
-        await driver.sleep(3000);
         assert(
-            (await driver
-                .findElement(By.css(".MuiPaper-elevation0"))
-                .getText()) == "Saved"
+            (await driver.findElement(By.xpath("//b")).getText()) == "Video App"
         );
     });
 });
