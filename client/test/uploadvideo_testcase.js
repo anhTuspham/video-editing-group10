@@ -43,7 +43,7 @@ describe("Upload video, image", function () {
         //await driver.findElement(By.css(".sc-hLseeU")).click();
         await driver
             .findElement(By.name("file"))
-            .sendKeys("F:/video-bong-da/mu.png");
+            .sendKeys("C:/Users/ACER/Pictures/Screenshots/Screenshot (17).png");
 
         await driver.sleep(1000);
 
@@ -72,7 +72,7 @@ describe("Upload video, image", function () {
         //await driver.findElement(By.css(".sc-hLseeU")).click();
         await driver
             .findElement(By.name("file"))
-            .sendKeys("F:/video-bong-da/BUR-vs-SUN.mp4");
+            .sendKeys("D:/HK2-2023-2024/CongCuVaMoiTruongPhatTrienPhanMem/intro.mp4");
 
         await driver.sleep(1000);
 
