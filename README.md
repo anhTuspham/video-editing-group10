@@ -40,3 +40,8 @@
      ```
      <img alt="img_4.png" src="img/img_4.png"/>
    ![img_5.png](img/img_5.png)
+      - Lên chrome gõ
+   ```
+   http://localhost:5002/
+   ```
+   Vậy là thành công
